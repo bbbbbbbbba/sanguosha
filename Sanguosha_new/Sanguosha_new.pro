@@ -66,7 +66,9 @@ HEADERS += \
     DelayedTrick.h \
     TimeWalk.h \
     JudgeEvent.h \
-    Lightning.h
+    Lightning.h \
+    Harvest.h \
+    Friendship.h
 
 SOURCES += \
     Zone.cpp \
@@ -132,4 +134,6 @@ SOURCES += \
     DelayedTrick.cpp \
     TimeWalk.cpp \
     JudgeEvent.cpp \
-    Lightning.cpp
+    Lightning.cpp \
+    Harvest.cpp \
+    Friendship.cpp

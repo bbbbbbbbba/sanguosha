@@ -8,6 +8,8 @@
 #include "Divination.h"
 #include "SouthernIntruder.h"
 #include "RandomShot.h"
+#include "Harvest.h"
+#include "Friendship.h"
 #include "Duel.h"
 #include "TimeWalk.h"
 #include "Lightning.h"
@@ -61,6 +63,7 @@ void initStarterDeck(vector<CardInfo *> &cards)
             *thievery=game->getCardType<Thievery>(),
             *divination=game->getCardType<Divination>(),
             *southernIntruder=game->getCardType<SouthernIntruder>(),
+            *harvest=game->getCardType<Harvest>(),
             *duel=game->getCardType<Duel>(),
             *timeWalk=game->getCardType<TimeWalk>(),
             *lightning=game->getCardType<Lightning>();
@@ -102,6 +105,9 @@ void initStarterDeck(vector<CardInfo *> &cards)
     cards.push_back(new CardInfo(southernIntruder,1,13));
     cards.push_back(new CardInfo(southernIntruder,4,7));
     cards.push_back(new CardInfo(game->getCardType<RandomShot>(),2,1));
+    cards.push_back(new CardInfo(harvest,2,2));
+    cards.push_back(new CardInfo(harvest,2,3));
+    cards.push_back(new CardInfo(game->getCardType<Friendship>(),2,1));
     cards.push_back(new CardInfo(duel,1,1));
     cards.push_back(new CardInfo(duel,3,1));
     cards.push_back(new CardInfo(duel,4,1));

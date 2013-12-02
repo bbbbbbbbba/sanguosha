@@ -136,6 +136,21 @@ void ConsolePlayer::inform(string message)
             if(!tail.empty()) cout<<"对"<<tail;
             cout<<"结算";
         }
+        else if(head=="non-effective")
+        {
+            i=tail.find_first_of(':');
+            tail=tail.substr(i+1);
+            i=tail.find_first_of(':');
+            string player=tail.substr(0,i);
+            tail=tail.substr(i+1);
+            i=tail.find_first_of(':');
+            string card=tail.substr(0,i);
+            tail=tail.substr(i+1);
+            if(!player.empty()) cout<<player<<"使用的";
+            cout<<card;
+            if(!tail.empty()) cout<<"对"<<tail;
+            cout<<"无效";
+        }
         else if(head=="error")
         {
             if(tail=="cannot_use") cout<<"没有合理的目标！";

@@ -11,6 +11,7 @@ public:
     PreUseStruct *data;
     vector<TargetStruct*> targets;
     bool isSpecial;
+    vector<SkillEffect*> skills;
     UseStruct(PreUseStruct *d,const vector<Player*> &tar,bool sp=false);
     virtual ~UseStruct();
     bool isLegal();

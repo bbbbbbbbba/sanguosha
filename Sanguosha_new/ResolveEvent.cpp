@@ -6,10 +6,16 @@ void ResolveEvent::execute()
 {
     if(!target||target->valid)
     {
-        //TODO: skills like 仁王盾
-        countered=false;
-        onTiming(beforeResolve);
-        if(!countered) dynamic_cast<NonEquipCard*>(data->data->info.name)->resolve(target,data);//TODO
+        bool effective=true;
+        game->applyStatics(useEffectiveness,&effective,this);
+        if(effective)
+            {
+            countered=false;
+            onTiming(beforeResolve);
+            if(!countered) dynamic_cast<NonEquipCard*>(data->data->info.name)->resolve(target,data);//TODO
+        }
+        else for(int i=0;i<game->players.size();i++)
+            game->players[i]->inform("non-effective:"+toString(game->players[i]));
     }
 }
 

@@ -5,13 +5,13 @@
 
 class DamageEvent : public Event
 {
-    void doDamage();
 protected:
     void execute();
 public:
     Player *player, *source;
     GameValue<int> value;
     Nature nature;
+    vector<Card*> cards;
     UseStruct *reason;
     DamageEvent(Player* p, Player *s, int v=1, Nature nat=Normal, UseStruct *r=NULL);
     void prevent();

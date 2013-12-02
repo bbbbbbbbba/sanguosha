@@ -6,6 +6,7 @@
 
 class SouthernIntruder : public NonEquipCard
 {
+protected:
     bool legalityCheck(Player *target, PreUseStruct *d);
 public:
     SouthernIntruder();

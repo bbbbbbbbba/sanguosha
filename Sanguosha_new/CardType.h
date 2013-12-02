@@ -3,6 +3,7 @@
 
 #include "Lib.h"
 #include "PreUseStruct.h"
+#include "UseStruct.h"
 class Player;
 class Card;
 
@@ -30,6 +31,7 @@ public:
     virtual bool use(PreUseStruct *d)=0;
     bool isLegalTarget(Player *target,PreUseStruct *d);
     virtual bool isMandatoryTarget(Player *target, PreUseStruct *d);
+    virtual vector<SkillEffect*> getUseSkill(UseStruct *d);
 };
 
 #endif // CARDTYPE_H

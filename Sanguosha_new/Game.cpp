@@ -69,6 +69,7 @@ Game::Game(const vector<ClientPlayer*> &clients, bool cheatMode):
 		while(1)
 		{
             (new TurnEvent(players[curPlayer]))->happen();
+            //TODO: extra turns
 			do curPlayer=(curPlayer+1)%nPlayer; while(!players[curPlayer]->alive);
 		}
 	}

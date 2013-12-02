@@ -52,6 +52,7 @@ enum Timing
     whenTargeted,
     afterTarget,
     afterTargeted,
+    useCleanup,
     //Timings of resolving cards
     beforeResolve,
     cardCountered,

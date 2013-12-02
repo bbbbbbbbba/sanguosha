@@ -37,3 +37,8 @@ bool CardType::isMandatoryTarget(Player *target, PreUseStruct *d)
     return false;
     //TODO: effects like 借刀杀人's
 }
+
+vector<SkillEffect *> CardType::getUseSkill(UseStruct *d)
+{
+    return vector<SkillEffect *>();
+}

@@ -6,6 +6,7 @@
 
 class RandomShot : public NonEquipCard
 {
+protected:
     bool legalityCheck(Player *target, PreUseStruct *d);
 public:
     RandomShot();

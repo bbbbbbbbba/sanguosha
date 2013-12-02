@@ -21,6 +21,8 @@ void UseEvent::execute()
     }
     if(!data->isLegal()) {data->data->testMove->undo();return;}
     data->data->testMove->undo();
+    data->skills=name->getUseSkill(data);
+    for(i=0;i<data->skills.size();i++) data->skills[i]->init();
     for(i=0;i<data->data->cards.size();i++) moveData.push_back(new MoveStruct(data->data->cards[i],targetZone));
     if(EquipCard *e=dynamic_cast<EquipCard*>(name))
     {
@@ -47,9 +49,11 @@ void UseEvent::execute()
             {
                 moveData.push_back(new MoveStruct(data->data->cards[i],&game->discardPile));
             }
-            (new MoveEvent(moveData,this))->happen();
+            (new MoveEvent(moveData))->happen();
         }
     }
+    onTiming(useCleanup);
+    for(i=0;i<data->skills.size();i++) data->skills[i]->remove();
 }
 
 UseEvent::UseEvent(UseStruct *d):success(false)

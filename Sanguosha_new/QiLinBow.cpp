@@ -36,6 +36,7 @@ bool QiLinSkill::trigger(Event *e, void *index)
     if(player->canDiscard(o)) cards.push_back(o);
     if(player->canDiscard(d)) cards.push_back(d);
     player->discard(vector<Card*>(1,player->chooseCard("discard:你发动了麒麟弓",cards)));
+    return true;
 }
 
 string QiLinSkill::toString(Event *e, void *index)

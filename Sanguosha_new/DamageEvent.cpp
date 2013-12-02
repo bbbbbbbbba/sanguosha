@@ -2,8 +2,12 @@
 #include "DamageEvent.h"
 #include "HpReductionEvent.h"
 
-void DamageEvent::doDamage()
+void DamageEvent::execute()
 {
+    if(!player->alive||value<=0) return;
+    //TODO: skills like 祸首
+    //TODO: skills like 酒
+    onTiming(beforeDamage);
     try
     {
         onTiming(beginDamage);
@@ -15,15 +19,6 @@ void DamageEvent::doDamage()
         onTiming(endDamage);
     }
     catch(DisturbedException &) {}
-}
-
-void DamageEvent::execute()
-{
-    if(!player->alive||value<=0) return;
-    //TODO: skills like 祸首
-    //TODO: skills like 酒
-    onTiming(beforeDamage);
-    doDamage();
     onTiming(afterEndDamage);
     //TODO: triggering chain
 }
@@ -33,7 +28,7 @@ DamageEvent::DamageEvent(Player *p, Player *s, int v, Nature nat, UseStruct *r):
     player=p;
     source=s;
     nature=nat;
-    reason=r;
+    if(reason=r) cards=r->data->cards;
 }
 
 void DamageEvent::prevent()
