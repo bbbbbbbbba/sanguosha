@@ -2,6 +2,7 @@
 #include "MoveEvent.h"
 #include "Cheat.h"
 #include "YieldEvent.h"
+#include "NeedUseEvent.h"
 #include "NeedYieldEvent.h"
 #include "PrimitiveMoveEvent.h"
 #include <map>
@@ -140,10 +141,11 @@ void Game::handleTiming(Timing t,Event *e,int i)
                         cards.push_back(c);
                         choices.push_back(c->getPhysicalCardInfo().toString());
                     }
+                    NeedUseEvent *need=dynamic_cast<NeedUseEvent*>(e);
                     for(k=0;k<cardTypes.size();k++)
                     {
                         CardType *type=cardTypes[k];
-                        if(type->legalToUse(t,e,p))
+                        if(type->legalToUse(t,e,p)||need&&need->player==p&&need->filter->filter(CardInfo(type,0,0)))
                         {
                             autoable=false;
                             for(int kk=0;kk<p->transformTable[type].size();kk++)
@@ -157,8 +159,8 @@ void Game::handleTiming(Timing t,Event *e,int i)
                             }
                         }
                     }
-                    NeedYieldEvent *need;
-                    if(t==needYield&&(need=dynamic_cast<NeedYieldEvent*>(e))->player==p)
+                    NeedYieldEvent *need2;
+                    if(t==needYield&&(need2=dynamic_cast<NeedYieldEvent*>(e))->player==p)
                     {
                         autoable=false;
                         for(Card *c=p->hand.next;c!=&p->hand;c=c->next) if(p->canYield(c,e))
@@ -169,7 +171,7 @@ void Game::handleTiming(Timing t,Event *e,int i)
                         for(k=0;k<cardTypes.size();k++)
                         {
                             CardType *type=cardTypes[k];
-                            if(need->filter->filter(CardInfo(type,0,0))) //TODO: potential oddballs like "need yield a red slash"
+                            if(need2->filter->filter(CardInfo(type,0,0))) //TODO: potential oddballs like "need yield a red slash"
                             {
                                 for(int kk=0;kk<p->transformTable[type].size();kk++)
                                 {

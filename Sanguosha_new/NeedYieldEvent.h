@@ -12,7 +12,7 @@ public:
     Player *player;
     CardFilter *filter;
     GameValue<bool> fulfilled;
-    NeedYieldEvent(Player *p,CardFilter *f);
+    NeedYieldEvent(Player *p, CardFilter *f);
     ~NeedYieldEvent();
     bool happen_success();
 };

@@ -3,6 +3,7 @@
 #include "NonEquipCard.h"
 #include "PrimitiveMoveEvent.h"
 #include "MoveEvent.h"
+#include "NeedUseEvent.h"
 #include "ResolveEvent.h"
 
 void UseEvent::execute()
@@ -31,6 +32,10 @@ void UseEvent::execute()
     }
     (new MoveEvent(moveData,this))->happen();
     if(data->data->cards.empty()||data->isSpecial) onTiming(specialUse);
+    if(NeedUseEvent *need=dynamic_cast<NeedUseEvent*>(data->data->reason))
+    {
+        if(need->filter->filter(data->data->info)) need->fulfilled=true; //TODO: wrong target
+    }
     success=true;
     if(name->type!=Equip)
     {

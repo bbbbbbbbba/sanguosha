@@ -19,6 +19,7 @@ public:
     PrimitiveMoveEvent *testMove;
     PreUseStruct(Player *p, const vector<Card*> &c, CardInfo i, Timing t, Event *r, Transform *trans);
     PreUseStruct(Player *p,Card *c,Timing t,Event *r);
+    PreUseStruct(Player *p, CardType *ct);
     ~PreUseStruct();
     bool use();
     bool isLegal();

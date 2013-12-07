@@ -12,6 +12,11 @@ PreUseStruct::PreUseStruct(Player *p, Card *c, Timing t, Event *r):info(c->getCa
     player=p;cards.push_back(c);timing=t;reason=r;transform=NULL;testMove=NULL;
 }
 
+PreUseStruct::PreUseStruct(Player *p, CardType *ct):info(ct,0,0)
+{
+    player=p;timing=nullTiming;reason=NULL;transform=NULL;testMove=NULL;
+}
+
 PreUseStruct::~PreUseStruct()
 {
 }

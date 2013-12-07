@@ -68,7 +68,11 @@ HEADERS += \
     JudgeEvent.h \
     Lightning.h \
     Harvest.h \
-    Friendship.h
+    Friendship.h \
+    CounterEvent.h \
+    Axe.h \
+    NeedUseEvent.h \
+    WeaponGambit.h
 
 SOURCES += \
     Zone.cpp \
@@ -136,4 +140,8 @@ SOURCES += \
     JudgeEvent.cpp \
     Lightning.cpp \
     Harvest.cpp \
-    Friendship.cpp
+    Friendship.cpp \
+    CounterEvent.cpp \
+    Axe.cpp \
+    NeedUseEvent.cpp \
+    WeaponGambit.cpp

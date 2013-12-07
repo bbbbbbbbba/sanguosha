@@ -1,6 +1,7 @@
 #include "Lib.h"
 #include "CounterCard.h"
 #include "ResolveEvent.h"
+#include "CounterEvent.h"
 
 bool CounterCard::legalityCheck(Player *target, PreUseStruct *d)
 {
@@ -16,8 +17,7 @@ bool CounterCard::canBeUsed(Timing t, Event *e, Player *p)
 void CounterCard::resolve(TargetStruct *target, UseStruct *d)
 {
     ResolveEvent *u=dynamic_cast<ResolveEvent*>(d->data->reason);
-    u->countered=true;
-    //TODO: "onCountered" skills
+    (new CounterEvent(u,d))->happen();
 }
 
 CounterCard::CounterCard(string name, Type t):NonEquipCard(name,t)

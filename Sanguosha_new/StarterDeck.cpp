@@ -11,10 +11,12 @@
 #include "Harvest.h"
 #include "Friendship.h"
 #include "Duel.h"
+#include "WeaponGambit.h"
 #include "TimeWalk.h"
 #include "Lightning.h"
 #include "CiXiongSword.h"
 #include "Spear.h"
+#include "Axe.h"
 #include "QiLinBow.h"
 #include "OffensiveHorse.h"
 #include "DefensiveHorse.h"
@@ -65,6 +67,7 @@ void initStarterDeck(vector<CardInfo *> &cards)
             *southernIntruder=game->getCardType<SouthernIntruder>(),
             *harvest=game->getCardType<Harvest>(),
             *duel=game->getCardType<Duel>(),
+            *weaponGambit=game->getCardType<WeaponGambit>(),
             *timeWalk=game->getCardType<TimeWalk>(),
             *lightning=game->getCardType<Lightning>();
     for(int r=2;r<=13;r++)
@@ -76,7 +79,7 @@ void initStarterDeck(vector<CardInfo *> &cards)
     for(int r=2;r<=7;r++)
     {
         cards.push_back(new CardInfo(game->getCardType<Spear>(),1,r));
-        cards.push_back(new CardInfo(game->getCardType<QiLinBow>(),2,r));
+        cards.push_back(new CardInfo(game->getCardType<Axe>(),2,r));
     }
     cards.push_back(new CardInfo(peach,2,3));
     cards.push_back(new CardInfo(peach,2,4));
@@ -111,6 +114,8 @@ void initStarterDeck(vector<CardInfo *> &cards)
     cards.push_back(new CardInfo(duel,1,1));
     cards.push_back(new CardInfo(duel,3,1));
     cards.push_back(new CardInfo(duel,4,1));
+    cards.push_back(new CardInfo(weaponGambit,4,12));
+    cards.push_back(new CardInfo(weaponGambit,4,13));
     cards.push_back(new CardInfo(timeWalk,1,6));
     cards.push_back(new CardInfo(timeWalk,2,6));
     cards.push_back(new CardInfo(timeWalk,4,6));

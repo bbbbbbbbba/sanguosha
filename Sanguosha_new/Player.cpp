@@ -4,6 +4,7 @@
 #include "DiscardEvent.h"
 #include "CardType.h"
 #include "WeaponCard.h"
+#include "NeedUseEvent.h"
 #include "NeedYieldEvent.h"
 
 Player::Player(ClientPlayer *c,Role r):role(r),alive(true),maxHp(4),hp(maxHp),
@@ -154,8 +155,10 @@ bool Player::canYield(Card *c, Event *e)
 
 bool Player::canUseAs(vector<Card*> c,CardInfo i,Timing t,Event *e)
 {
-    //TODO: NeedUse
-    return i.name->legalToUse(t,e,this);//TODO: Skills like 鸡肋
+    bool res;
+    if(NeedUseEvent *need=dynamic_cast<NeedUseEvent*>(e)) res=!need->fulfilled&&need->player==this&&need->filter->filter(i);
+    else res=i.name->legalToUse(t,e,this);
+    return res;//TODO: Skills like 鸡肋
 }
 
 bool Player::canYieldAs(vector<Card*> c,CardInfo i,Event *e)

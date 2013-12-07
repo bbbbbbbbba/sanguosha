@@ -32,6 +32,11 @@ bool CardType::isLegalTarget(Player *target, PreUseStruct *d)
     //TODO: "No distance limit" skills and skills like 空城
 }
 
+bool CardType::isLegalTarget(Player *target, Player *user)
+{
+    return isLegalTarget(target,new PreUseStruct(user,this));
+}
+
 bool CardType::isMandatoryTarget(Player *target, PreUseStruct *d)
 {
     return false;

@@ -29,7 +29,8 @@ public:
     virtual ~CardType();
     bool legalToUse(Timing t, Event *e, Player *p);
     virtual bool use(PreUseStruct *d)=0;
-    bool isLegalTarget(Player *target,PreUseStruct *d);
+    bool isLegalTarget(Player *target, PreUseStruct *d);
+    bool isLegalTarget(Player *target, Player *user);
     virtual bool isMandatoryTarget(Player *target, PreUseStruct *d);
     virtual vector<SkillEffect*> getUseSkill(UseStruct *d);
 };

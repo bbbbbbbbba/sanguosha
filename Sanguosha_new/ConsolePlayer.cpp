@@ -87,8 +87,9 @@ void ConsolePlayer::inform(string message)
             i=tail.find_first_of(':');
             cout<<tail.substr(0,i)<<"的身份是"<<roleString[atoi(tail.substr(i+1).c_str())];
         }
-        else if(head=="use")
+        else if(head=="use"||head=="yield")
         {
+            string action=head=="use"?"使用":"打出";
             i=tail.find_first_of(':');
             string player=tail.substr(0,i);
             tail=tail.substr(i+1);
@@ -96,7 +97,7 @@ void ConsolePlayer::inform(string message)
             string card=tail.substr(0,i);
             tail=tail.substr(i+1);
             i=card.find_first_of('<');
-            if(i==string::npos) cout<<player<<"使用了"<<card;
+            if(i==string::npos) cout<<player<<action<<"了"<<card;
             else
             {
                 string info=card.substr(0,i),trans=card.substr(i+1);
@@ -110,9 +111,9 @@ void ConsolePlayer::inform(string message)
                     list=list.substr(i+1);
                     if(!list.empty()) cout<<"、";
                 }
-                cout<<"当"<<info<<"使用";
+                cout<<"当"<<info<<action;
             }
-            if(!tail.empty())
+            if(head=="use"&&!tail.empty())
             {
                 cout<<"，目标是";
                 while((i=tail.find_first_of(';'))!=string::npos)
@@ -193,7 +194,7 @@ int ConsolePlayer::getChoice(string reason, const vector<string> &choices)
     {
         cout<<"请选择目标：";
     }
-    else cout<<"please choose for <"<<reason<<">";
+    else cout<<reason;
     cout<<"\n";
     for(int i=0;i<choices.size();i++)
     {
@@ -233,8 +234,8 @@ vector<int> ConsolePlayer::getMultiChoice(string reason, const vector<string> &c
         if(mandatory[i]) {num++;newChoices.push_back("* "+choices[i]);}
         else newChoices.push_back(choices[i]);
     }
-    newChoices.push_back("Cancel");
-    if(num) newChoices.push_back("OK");
+    newChoices.push_back("取消");
+    if(num) newChoices.push_back("确定");
     if(max>=0&&num>max) return res;
     if(max>choices.size()) max=choices.size();
     if(num!=max)

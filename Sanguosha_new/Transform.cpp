@@ -3,7 +3,7 @@
 
 Transform::Transform(Player *p)
 {
-    player=p;
+    player=p;nRemoves=0;
 }
 
 void Transform::__init()
