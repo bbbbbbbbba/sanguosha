@@ -97,6 +97,7 @@ enum StaticValue
     distanceValue,
     maxTargetValue,
     useEffectiveness,
+    slashLimitApplied,
     //
     nStaticValues
 };

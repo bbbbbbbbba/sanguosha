@@ -72,7 +72,9 @@ HEADERS += \
     CounterEvent.h \
     Axe.h \
     NeedUseEvent.h \
-    WeaponGambit.h
+    WeaponGambit.h \
+    CrossBow.h \
+    IceSword.h
 
 SOURCES += \
     Zone.cpp \
@@ -144,4 +146,6 @@ SOURCES += \
     CounterEvent.cpp \
     Axe.cpp \
     NeedUseEvent.cpp \
-    WeaponGambit.cpp
+    WeaponGambit.cpp \
+    CrossBow.cpp \
+    IceSword.cpp

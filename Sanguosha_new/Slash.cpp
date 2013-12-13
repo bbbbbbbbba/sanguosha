@@ -27,7 +27,9 @@ bool Slash::canBeUsed(Timing t, Event *e, Player *p)
     if(!NonEquipCard::canBeUsed(t,e,p)) return false;
     if(PhaseEvent *ph=dynamic_cast<PhaseEvent*>(e))
     {
-        for(int i=game->timeline.size()-1;i>=0;i--)
+        bool limit=true;
+        game->applyStatics(slashLimitApplied,&limit,p);
+        if(limit) for(int i=game->timeline.size()-1;i>=0;i--)
         {
             PrimitiveEvent *p=game->timeline[i];
             if(EventBegin *begin=dynamic_cast<EventBegin*>(p))

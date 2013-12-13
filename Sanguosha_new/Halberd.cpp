@@ -12,7 +12,6 @@ vector<SkillEffect *> Halberd::getEquipSkill(Player *p)
     return vector<SkillEffect *>(1,new HalberdSkill(p));
 }
 
-
 HalberdSkill::HalberdSkill(Player *p)
 {
     player=p;influence=maxTargetValue;

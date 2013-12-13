@@ -14,9 +14,12 @@
 #include "WeaponGambit.h"
 #include "TimeWalk.h"
 #include "Lightning.h"
+#include "CrossBow.h"
 #include "CiXiongSword.h"
+#include "IceSword.h"
 #include "Spear.h"
 #include "Axe.h"
+#include "Halberd.h"
 #include "QiLinBow.h"
 #include "OffensiveHorse.h"
 #include "DefensiveHorse.h"
@@ -70,17 +73,51 @@ void initStarterDeck(vector<CardInfo *> &cards)
             *weaponGambit=game->getCardType<WeaponGambit>(),
             *timeWalk=game->getCardType<TimeWalk>(),
             *lightning=game->getCardType<Lightning>();
-    for(int r=2;r<=13;r++)
-    {
-        cards.push_back(new CardInfo(slash,1,r));
-        cards.push_back(new CardInfo(dodge,3,r));
-        cards.push_back(new CardInfo(slash,4,r));
-    }
-    for(int r=2;r<=7;r++)
-    {
-        cards.push_back(new CardInfo(game->getCardType<Spear>(),1,r));
-        cards.push_back(new CardInfo(game->getCardType<Axe>(),2,r));
-    }
+    cards.push_back(new CardInfo(slash,1,7));
+    cards.push_back(new CardInfo(slash,1,8));
+    cards.push_back(new CardInfo(slash,1,8));
+    cards.push_back(new CardInfo(slash,1,9));
+    cards.push_back(new CardInfo(slash,1,9));
+    cards.push_back(new CardInfo(slash,1,10));
+    cards.push_back(new CardInfo(slash,1,10));
+    cards.push_back(new CardInfo(slash,2,10));
+    cards.push_back(new CardInfo(slash,2,10));
+    cards.push_back(new CardInfo(slash,2,11));
+    cards.push_back(new CardInfo(slash,3,6));
+    cards.push_back(new CardInfo(slash,3,7));
+    cards.push_back(new CardInfo(slash,3,8));
+    cards.push_back(new CardInfo(slash,3,9));
+    cards.push_back(new CardInfo(slash,3,10));
+    cards.push_back(new CardInfo(slash,3,13));
+    cards.push_back(new CardInfo(slash,4,2));
+    cards.push_back(new CardInfo(slash,4,3));
+    cards.push_back(new CardInfo(slash,4,4));
+    cards.push_back(new CardInfo(slash,4,5));
+    cards.push_back(new CardInfo(slash,4,6));
+    cards.push_back(new CardInfo(slash,4,7));
+    cards.push_back(new CardInfo(slash,4,8));
+    cards.push_back(new CardInfo(slash,4,8));
+    cards.push_back(new CardInfo(slash,4,9));
+    cards.push_back(new CardInfo(slash,4,9));
+    cards.push_back(new CardInfo(slash,4,10));
+    cards.push_back(new CardInfo(slash,4,10));
+    cards.push_back(new CardInfo(slash,4,11));
+    cards.push_back(new CardInfo(slash,4,11));
+    cards.push_back(new CardInfo(dodge,2,2));
+    cards.push_back(new CardInfo(dodge,2,2));
+    cards.push_back(new CardInfo(dodge,2,13));
+    cards.push_back(new CardInfo(dodge,3,2));
+    cards.push_back(new CardInfo(dodge,3,2));
+    cards.push_back(new CardInfo(dodge,3,3));
+    cards.push_back(new CardInfo(dodge,3,4));
+    cards.push_back(new CardInfo(dodge,3,5));
+    cards.push_back(new CardInfo(dodge,3,6));
+    cards.push_back(new CardInfo(dodge,3,7));
+    cards.push_back(new CardInfo(dodge,3,8));
+    cards.push_back(new CardInfo(dodge,3,9));
+    cards.push_back(new CardInfo(dodge,3,10));
+    cards.push_back(new CardInfo(dodge,3,11));
+    cards.push_back(new CardInfo(dodge,3,11));
     cards.push_back(new CardInfo(peach,2,3));
     cards.push_back(new CardInfo(peach,2,4));
     cards.push_back(new CardInfo(peach,2,6));
@@ -89,6 +126,14 @@ void initStarterDeck(vector<CardInfo *> &cards)
     cards.push_back(new CardInfo(peach,2,9));
     cards.push_back(new CardInfo(peach,2,12));
     cards.push_back(new CardInfo(peach,3,12));
+    cards.push_back(new CardInfo(game->getCardType<CrossBow>(),3,1));
+    cards.push_back(new CardInfo(game->getCardType<CrossBow>(),4,1));
+    cards.push_back(new CardInfo(game->getCardType<CiXiongSword>(),1,2));
+    cards.push_back(new CardInfo(game->getCardType<IceSword>(),1,2));
+    cards.push_back(new CardInfo(game->getCardType<Spear>(),1,12));
+    cards.push_back(new CardInfo(game->getCardType<Axe>(),3,5));
+    cards.push_back(new CardInfo(game->getCardType<Halberd>(),3,12));
+    cards.push_back(new CardInfo(game->getCardType<QiLinBow>(),2,5));
     cards.push_back(new CardInfo(dismantle,1,3));
     cards.push_back(new CardInfo(dismantle,1,4));
     cards.push_back(new CardInfo(dismantle,1,12));
