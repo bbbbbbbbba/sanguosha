@@ -41,6 +41,7 @@ bool CiXiongSkill::trigger(Event *e, void *index)
 {
     Player *target=((TargetStruct*)index)->player;
     vector<Card*> cards;
+    for(int i=0;i<game->nPlayer;i++) game->players[i]->inform(player->toString()+"对"+target->toString()+"发动了雌雄双股剑");
     for(Card *c=target->hand.next;c!=&target->hand;c=c->next) if(target->canDiscard(c)) cards.push_back(c);
     Card *res=target->chooseCard("discard:"+player->toString()+"对你发动雌雄双股剑",cards,"令对方摸一张牌");
     if(res) target->discard(vector<Card*>(1,res));

@@ -251,10 +251,10 @@ vector<int> ConsolePlayer::getMultiChoice(string reason, const vector<string> &c
             i=getChoice(reason,newChoices);
             if(i==n) return res;
             if(i==n+1) break;
-            if(selected[i]) if(mandatory[i]) cout<<"这一项必须选择！";
+            if(selected[i]) if(mandatory[i]) cout<<"这一项必须选择！\n";
             else {selected[i]=false;newChoices[i]=choices[i];if(--num==0) newChoices.pop_back();}
-            else if(num==max) cout<<"已经达到个数上限\n";
-            else {selected[i]=true;newChoices[i]="* "+choices[i];if(num++==0) newChoices.push_back("OK");}
+            else if(num==max) cout<<"已经达到个数上限！\n";
+            else {selected[i]=true;newChoices[i]="* "+choices[i];if(num++==0) newChoices.push_back("确定");}
         }
     }
     for(i=0;i<n;i++) if(selected[i]) res.push_back(i);

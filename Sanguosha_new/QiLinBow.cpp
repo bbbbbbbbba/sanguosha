@@ -31,6 +31,7 @@ vector<void *> QiLinSkill::getTrigger(Event *e, vector<void *> past)
 bool QiLinSkill::trigger(Event *e, void *index)
 {
     DamageEvent *damage=dynamic_cast<DamageEvent*>(e);
+    for(int i=0;i<game->nPlayer;i++) game->players[i]->inform(player->toString()+"发动了麒麟弓");
     Card *o=damage->player->getEquip(OffHorse),*d=damage->player->getEquip(DefHorse);
     vector<Card*> cards;
     if(player->canDiscard(o)) cards.push_back(o);

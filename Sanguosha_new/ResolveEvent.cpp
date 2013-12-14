@@ -14,7 +14,7 @@ void ResolveEvent::execute()
             onTiming(beforeResolve);
             if(!countered) dynamic_cast<NonEquipCard*>(data->data->info.name)->resolve(target,data);//TODO
         }
-        else for(int i=0;i<game->players.size();i++)
+        else for(int i=0;i<game->nPlayer;i++)
             game->players[i]->inform("non-effective:"+toString(game->players[i]));
     }
 }

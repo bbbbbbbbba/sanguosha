@@ -186,7 +186,7 @@ void Game::handleTiming(Timing t,Event *e,int i)
                         }
                     }
                 }
-                if(cancelable) choices.push_back("Cancel");
+                if(cancelable) choices.push_back("取消");
                 int x=0;
                 if(!autoable||choices.size()>1)
                 {

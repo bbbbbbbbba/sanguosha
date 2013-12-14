@@ -52,6 +52,7 @@ bool AxeSkill::trigger(Event *e, void *index)
         }
     }
     if(res.empty()) return false;
+    for(int i=0;i<game->nPlayer;i++) game->players[i]->inform(player->toString()+"发动了贯石斧");
     player->discard(res);
     CounterEvent *counter=dynamic_cast<CounterEvent*>(e);
     counter->resolve->countered=false;

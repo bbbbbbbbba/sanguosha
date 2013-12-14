@@ -35,8 +35,10 @@ bool IceSwordSkill::trigger(Event *e, void *index)
     DamageEvent *damage=dynamic_cast<DamageEvent*>(e);
     Player *target=damage->player;
     vector<Card*> cards;
+    int i;
+    for(i=0;i<game->nPlayer;i++) game->players[i]->inform(player->toString()+"发动寒冰剑，防止此伤害");
     damage->prevent();
-    for(int i=0;i<2;i++)
+    for(i=0;i<2;i++)
     {
         Card *c;
         cards.clear();
