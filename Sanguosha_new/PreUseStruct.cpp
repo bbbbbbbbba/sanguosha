@@ -19,6 +19,7 @@ PreUseStruct::PreUseStruct(Player *p, CardType *ct):info(ct,0,0)
 
 PreUseStruct::~PreUseStruct()
 {
+    if(testMove) delete testMove;
 }
 
 bool PreUseStruct::use()
@@ -33,7 +34,7 @@ bool PreUseStruct::isLegal()
 
 int PreUseStruct::getMaxTargets()
 {
-    int res=info.name->maxTargets;//TODO: Skills like 方天画戟
+    int res=info.name->maxTargets;
     game->applyStatics(maxTargetValue,&res,this);
     return res;
 }
