@@ -39,6 +39,7 @@ void ConsolePlayer::inform(string message)
             {
                 cout<<tail.substr(0,i);
                 tail=tail.substr(i+1);
+                if(!tail.empty()) cout<<"，";
             }
         }
         else if(head=="move")
