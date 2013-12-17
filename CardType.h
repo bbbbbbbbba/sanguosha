@@ -33,6 +33,7 @@ public:
     bool isLegalTarget(Player *target, Player *user);
     virtual bool isMandatoryTarget(Player *target, PreUseStruct *d);
     virtual vector<SkillEffect*> getUseSkill(UseStruct *d);
+    virtual string tagToString(void *tag);
 };
 
 #endif // CARDTYPE_H

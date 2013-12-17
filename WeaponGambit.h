@@ -11,6 +11,7 @@ public:
     WeaponGambit();
     void resolve(TargetStruct *target, UseStruct *d);
     bool extraChoice(UseStruct *d);
+    string tagToString(void *tag);
 };
 
 #endif // WEAPONGAMBIT_H

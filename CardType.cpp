@@ -47,3 +47,8 @@ vector<SkillEffect *> CardType::getUseSkill(UseStruct *d)
 {
     return vector<SkillEffect *>();
 }
+
+string CardType::tagToString(void *tag)
+{
+    return "";
+}

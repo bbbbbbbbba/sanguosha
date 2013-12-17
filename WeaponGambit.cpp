@@ -48,3 +48,8 @@ bool WeaponGambit::extraChoice(UseStruct *d)
     }
     return true;
 }
+
+string WeaponGambit::tagToString(void *tag)
+{
+    return "（杀"+((Player*)tag)->toString()+"）";
+}

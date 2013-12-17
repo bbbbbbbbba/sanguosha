@@ -76,6 +76,10 @@ string UseEvent::toString(Player *p)
     string res="use:";
     res+=data->data->toString();
     res+=":";
-    for(int i=0;i<data->targets.size();i++) res+=data->targets[i]->toString()+";";
+    for(int i=0;i<data->targets.size();i++)
+    {
+        TargetStruct *target=data->targets[i];
+        res+=target->toString()+data->data->info.name->tagToString(target->tag)+";";
+    }
     return res;
 }
