@@ -21,6 +21,7 @@
 #include "Axe.h"
 #include "Halberd.h"
 #include "QiLinBow.h"
+#include "EightDiagram.h"
 #include "RenWangShield.h"
 #include "OffensiveHorse.h"
 #include "DefensiveHorse.h"
@@ -135,6 +136,8 @@ void initStarterDeck(vector<CardInfo *> &cards)
     cards.push_back(new CardInfo(game->getCardType<Axe>(),3,5));
     cards.push_back(new CardInfo(game->getCardType<Halberd>(),3,12));
     cards.push_back(new CardInfo(game->getCardType<QiLinBow>(),2,5));
+    cards.push_back(new CardInfo(game->getCardType<EightDiagram>(),1,2));
+    cards.push_back(new CardInfo(game->getCardType<EightDiagram>(),4,2));
     cards.push_back(new CardInfo(game->getCardType<RenWangShield>(),4,2));
     cards.push_back(new CardInfo(dismantle,1,3));
     cards.push_back(new CardInfo(dismantle,1,4));

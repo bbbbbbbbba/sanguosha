@@ -75,7 +75,8 @@ HEADERS += \
     WeaponGambit.h \
     CrossBow.h \
     IceSword.h \
-    RenWangShield.h
+    RenWangShield.h \
+    EightDiagram.h
 
 SOURCES += \
     Zone.cpp \
@@ -150,4 +151,5 @@ SOURCES += \
     WeaponGambit.cpp \
     CrossBow.cpp \
     IceSword.cpp \
-    RenWangShield.cpp
+    RenWangShield.cpp \
+    EightDiagram.cpp

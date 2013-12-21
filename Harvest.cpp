@@ -40,7 +40,7 @@ vector<SkillEffect *> Harvest::getUseSkill(UseStruct *d)
 
 HarvestInit::HarvestInit(UseStruct *d) : Trigger(d->data->player)
 {
-    data=d;timings.push_back(afterMove);timings.push_back(specialUse);isMandatory=true;priority=0;
+    data=d;timings.push_back(afterMove);timings.push_back(specialUse);isMandatory=true;priority=2;
 }
 
 vector<void *> HarvestInit::getTrigger(Event *e, vector<void *> past)
@@ -73,7 +73,7 @@ string HarvestInit::toString(Event *e, void *index)
 
 HarvestCleanup::HarvestCleanup(UseStruct *d) : Trigger(d->data->player)
 {
-    data=d;timings.push_back(useCleanup);isMandatory=true;priority=0;
+    data=d;timings.push_back(useCleanup);isMandatory=true;priority=2;
 }
 
 vector<void *> HarvestCleanup::getTrigger(Event *e, vector<void *> past)
