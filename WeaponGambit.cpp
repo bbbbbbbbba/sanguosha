@@ -16,7 +16,7 @@ WeaponGambit::WeaponGambit() : NonEquipCard("借刀杀人",Trick)
 void WeaponGambit::resolve(TargetStruct *target, UseStruct *d)
 {
     Player *user=d->data->player,*tar=target->player,*tar2=(Player*)target->tag;
-    if(!(new NeedUseEvent(tar,new NameFilter<Slash>,vector<Player*>(1,tar2)))->happen_success())
+    if(!(new NeedUseEvent(tar,new NameFilter<Slash>(),vector<Player*>(1,tar2)))->happen_success())
         if(Card* weapon=tar->getEquip(Weapon))
             (new MoveEvent(vector<MoveStruct*>(1,new MoveStruct(weapon,&user->hand))))->happen();
 }

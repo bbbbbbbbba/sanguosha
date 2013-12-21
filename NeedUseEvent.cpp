@@ -6,7 +6,7 @@ void NeedUseEvent::execute()
     onTiming(needUse);
 }
 
-NeedUseEvent::NeedUseEvent(Player *p, CardFilter *f, vector<Player *> t)
+NeedUseEvent::NeedUseEvent(Player *p, CardFilter *f, vector<Player *> t) : fulfilled(false)
 {
     player=p;filter=f;target=t;
 }

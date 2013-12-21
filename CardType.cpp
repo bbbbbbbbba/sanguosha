@@ -34,7 +34,10 @@ bool CardType::isLegalTarget(Player *target, PreUseStruct *d)
 
 bool CardType::isLegalTarget(Player *target, Player *user)
 {
-    return isLegalTarget(target,new PreUseStruct(user,this));
+    PreUseStruct *temp=new PreUseStruct(user,this);
+    bool res=isLegalTarget(target,temp);
+    delete temp;
+    return res;
 }
 
 bool CardType::isMandatoryTarget(Player *target, PreUseStruct *d)
