@@ -34,7 +34,11 @@ void UseEvent::execute()
     if(data->data->cards.empty()||data->isSpecial) onTiming(specialUse);
     if(NeedUseEvent *need=dynamic_cast<NeedUseEvent*>(data->data->reason))
     {
-        if(need->filter->filter(data->data->info)) need->fulfilled=true; //TODO: wrong target
+        if(need->filter->filter(data->data->info))
+        {
+            need->fulfilled=true; //TODO: wrong target
+            need->curTiming=nullTiming;
+        }
     }
     success=true;
     if(name->type!=Equip)

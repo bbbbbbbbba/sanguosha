@@ -100,7 +100,6 @@ void Game::handleTiming(Timing t,Event *e,int i)
         {
             if(t==doMainPhase&&j<2) continue;
             map<Trigger*,vector<void*> > triggerDone;
-            bool cardUsed=false;
             triggerDone.clear();
             do
             {
@@ -134,7 +133,7 @@ void Game::handleTiming(Timing t,Event *e,int i)
                         }
                     }
                 }
-                if(t==doMainPhase||j==2&&!cardUsed)
+                if(j==2)
                 {
                     for(Card *c=p->hand.next;c!=&p->hand;c=c->next) if(p->canUse(c,t,e))
                     {
@@ -203,34 +202,24 @@ void Game::handleTiming(Timing t,Event *e,int i)
                 else if((x-=triggers.size())<cards.size())
                 {
                     Card *c=cards[x];
-                    PreUseStruct *d=new PreUseStruct(p,c,t,e);
-                    if(d->use()) cardUsed=true;
+                    (new PreUseStruct(p,c,t,e))->use();
                 }
                 else if((x-=cards.size())<transforms_use.size())
                 {
                     pair<Transform*,CardType*> trans=transforms_use[x];
                     vector<Card*> c=trans.first->chooseCards(trans.second,e);
-                    if(!c.empty())
-                    {
-                        PreUseStruct *d=new PreUseStruct(p,c,CardInfo(trans.second,c),t,e,trans.first);
-                        if(d->use()) cardUsed=true;
-                    }
+                    if(!c.empty()) (new PreUseStruct(p,c,CardInfo(trans.second,c),t,e,trans.first))->use();
                 }
                 else if((x-=transforms_use.size())<yields.size())
                 {
                     Card *c=yields[x];
                     (new YieldEvent(p,c,e))->happen();
-                    cardUsed=true;
                 }
                 else if((x-=yields.size())<transforms_yield.size())
                 {
                     pair<Transform*,CardType*> trans=transforms_yield[x];
                     vector<Card*> c=trans.first->chooseCards(trans.second,e);
-                    if(!c.empty())
-                    {
-                        (new YieldEvent(p,c,CardInfo(trans.second,c),e,trans.first))->happen();
-                        cardUsed=true;
-                    }
+                    if(!c.empty()) (new YieldEvent(p,c,CardInfo(trans.second,c),e,trans.first))->happen();
                 }
                 else break;
                 if(!e->curTiming)

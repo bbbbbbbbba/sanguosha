@@ -14,7 +14,11 @@ void YieldEvent::execute()
     if(cards.empty()||isSpecial) onTiming(specialYield);
     if(NeedYieldEvent *need=dynamic_cast<NeedYieldEvent*>(reason))
     {
-        if(need->filter->filter(info)) need->fulfilled=true;
+        if(need->filter->filter(info))
+        {
+            need->fulfilled=true;
+            need->curTiming=nullTiming;
+        }
     }
 }
 

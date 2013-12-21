@@ -6,12 +6,13 @@ void ResolveEvent::execute()
 {
     if(!target||target->valid)
     {
+        if(!target) data->data->reason->curTiming=nullTiming; //CounterCard
         bool effective=true;
         game->applyStatics(useEffectiveness,&effective,this);
         if(effective)
-            {
+        {
             countered=false;
-            onTiming(beforeResolve);
+            try {onTiming(beforeResolve);} catch(DisturbedException &) {}
             if(!countered) dynamic_cast<NonEquipCard*>(data->data->info.name)->resolve(target,data);//TODO
         }
         else for(int i=0;i<game->nPlayer;i++)
